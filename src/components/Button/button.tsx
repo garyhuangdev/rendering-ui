@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode, FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react'
 import classnames from 'classnames'
 
 export type ButtonSize = 'lg' | 'sm'
@@ -9,18 +9,28 @@ interface InitialButtonProps {
   disabled?: boolean;
   size?: ButtonSize;
   btnType?: ButtonType;
-  children: React.ReactNode;
+  children: ReactNode;
   href?: string;
 }
 
-type BaseButtonProps = InitialButtonProps & React.ButtonHTMLAttributes<HTMLElement>
-type AnchorButtonProps = InitialButtonProps & React.AnchorHTMLAttributes<HTMLElement>
+// get all props in button
+// intersect types with &
+type BaseButtonProps = InitialButtonProps & ButtonHTMLAttributes<HTMLElement>
+type AnchorButtonProps = InitialButtonProps & AnchorHTMLAttributes<HTMLElement>
 
-
+// set these props as optional
 export type ButtonProps = Partial<BaseButtonProps & AnchorButtonProps>
 
-const Button: React.FC<ButtonProps> = (props) => {
-  const { className, disabled, size, btnType, children, href, ...restProps } = props
+const Button: FC<ButtonProps> = (props) => {
+  const {
+    className,
+    disabled,
+    size,
+    btnType,
+    children,
+    href,
+    ...restProps
+  } = props;
 
   const classes = classnames('btn', className, {
     [`btn-${btnType}`]: btnType,
