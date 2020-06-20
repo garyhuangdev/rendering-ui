@@ -25,7 +25,7 @@ interface IMenuContext {
 export const MenuContext = createContext<IMenuContext>({ index: '0' })
 export const Menu: FC<MenuProps> = (props) => {
   const { className, mode, style, children, initialIndex, onSelect, initialOpenSubMenus } = props
-  const [currentActive, setActive] = useState(initialIndex)
+  const [active, setActive] = useState(initialIndex)
 
   const classes = classNames('menu', className, {
     'menu-vertical': mode === 'vertical',
@@ -40,7 +40,7 @@ export const Menu: FC<MenuProps> = (props) => {
   }
 
   const passedContext: IMenuContext = {
-    index: currentActive ? currentActive : '0',
+    index: active ? active : '0',
     onSelect: handleClick,
     mode,
     initialOpenSubMenus,
