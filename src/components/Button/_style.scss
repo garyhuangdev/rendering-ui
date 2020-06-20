@@ -19,6 +19,7 @@
     opacity: $btn-disabled-opacity;
     box-shadow: none;
     > * {
+      // disabled all child node pointer events
       pointer-events: none;
     }
   }
@@ -35,6 +36,7 @@
 .btn-primary {
   @include button-style($primary, $primary, $white)
 }
+
 .btn-danger {
   @include button-style($danger, $danger, $white)
 }

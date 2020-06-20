@@ -1,17 +1,8 @@
 import React, { ReactNode, FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react'
 import classnames from 'classnames'
 
-export enum ButtonType {
-  Primary = 'primary',
-  Default = 'default',
-  Danger = 'danger',
-  Link = 'link'
-}
-
-export enum ButtonSize {
-  Large = 'lg',
-  Small = 'sm'
-}
+export type ButtonSize = 'lg' | 'sm'
+export type ButtonType = 'primary' | 'default' | 'danger' | 'link'
 
 interface InitialButtonProps {
   className?: string;
