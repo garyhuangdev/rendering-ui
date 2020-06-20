@@ -19,15 +19,15 @@ jest.mock('react-transition-group', () => {
 })
 
 const testProps: MenuProps = {
-  defaultIndex: '0',
+  initialIndex: '0',
   onSelect: jest.fn(),
   className: 'test'
 }
 
 const testVerProps: MenuProps = {
-  defaultIndex: '0',
+  initialIndex: '0',
   mode: 'vertical',
-  defaultOpenSubMenus: ['4']
+  initialOpenSubMenus: ['4']
 }
 
 const generateMenu = (props: MenuProps) => {
@@ -75,6 +75,7 @@ const createStyleFile = () => {
 let wrapper: RenderResult, wrapper2: RenderResult, menuElement: HTMLElement, activeElement: HTMLElement, disabledElement: HTMLElement
 describe('should render Menu and MenuItem in row mode', () => {
   
+  // assign values to these props before every test
   beforeEach(() => {
     wrapper = render(generateMenu(testProps))
     wrapper.container.append(createStyleFile())
@@ -107,6 +108,8 @@ describe('should render Menu and MenuItem in row mode', () => {
     expect(wrapper.queryByText('dropdown1')).not.toBeVisible()
     const dropdownElement = wrapper.getByText('dropdown')
     fireEvent.mouseEnter(dropdownElement)
+
+    // have setTimeout in handleMouse, use await here
     await wait(() => {
       expect(wrapper.queryByText('dropdown1')).toBeVisible()
     })
@@ -136,7 +139,7 @@ describe('test Menu and MenuItem component in vertical mode', () => {
     fireEvent.click(wrapper2.getByText('dropdown'))
     expect(dropDownItem).toBeVisible()
   })
-  it('should show subMenu dropdown when defaultOpenSubMenus contains SubMenu index', () => {
+  it('should show subMenu dropdown when initialOpenSubMenus contains SubMenu index', () => {
     expect(wrapper2.queryByText('opened1')).toBeVisible()
   })
 })

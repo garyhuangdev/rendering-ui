@@ -13,7 +13,7 @@ export interface SubMenuProps {
 
 const SubMenu: React.FC<SubMenuProps> = ({ index, title, children, className }) => {
   const context = useContext(MenuContext)
-  const openedSubMenus = context.defaultOpenSubMenus as Array<string>
+  const openedSubMenus = context.initialOpenSubMenus as Array<string>
   const isOpend = (index && context.mode === 'vertical') ? openedSubMenus.includes(index) : false
   const [open, setOpen] = useState(isOpend)
 
@@ -50,6 +50,8 @@ const SubMenu: React.FC<SubMenuProps> = ({ index, title, children, className }) 
     const subMenuClasses = classNames('submenu', {
       'menu-opened': open
     })
+
+    // use cloneElement to insert index into MenuItem
     const childrenComponent = React.Children.map(children, (child, i) => {
       const childElement = child as FunctionComponentElement<MenuItemProps>
       if (childElement.type.displayName === 'MenuItem') {
