@@ -1,0 +1,6 @@
+// using map to match color and icon
+@each $key, $val in $theme-colors {
+  .icon-#{$key} {
+    color: $val;
+  }
+}

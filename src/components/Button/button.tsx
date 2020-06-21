@@ -1,6 +1,7 @@
 import React, { ReactNode, FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react'
 import classnames from 'classnames'
 
+// String Literal Types, similar to enum
 export type ButtonSize = 'lg' | 'sm'
 export type ButtonType = 'primary' | 'default' | 'danger' | 'link'
 
@@ -32,6 +33,7 @@ const Button: FC<ButtonProps> = (props) => {
     ...restProps
   } = props;
 
+  // add classes
   const classes = classnames('btn', className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
