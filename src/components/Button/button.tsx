@@ -22,7 +22,7 @@ type AnchorButtonProps = InitialButtonProps & AnchorHTMLAttributes<HTMLElement>
 // set these props as optional
 export type ButtonProps = Partial<BaseButtonProps & AnchorButtonProps>
 
-const Button: FC<ButtonProps> = (props) => {
+export const Button: FC<ButtonProps> = (props) => {
   const {
     className,
     disabled,
