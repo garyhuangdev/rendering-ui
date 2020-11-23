@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React, add a line to test first commit with GitKraken
         </a>
       </header>
     </div>
